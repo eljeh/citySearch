@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+main {
+  min-height: 100vh;
+  //max-width: 96ch;
+  //margin: 0.4vh auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: 96ch;
+  margin: auto;
+
+  &.fluid {
+    max-width: unset;
+  }
+}
+main.content {
+  max-width: unset;
+}

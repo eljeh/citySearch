@@ -1,0 +1,38 @@
+@use '../abstracts/' as *;
+@forward '../base/design-tokens.scss';
+
+body {
+  display: grid;
+  grid-template: 'header' var(--banner-h) 'main' auto 'footer' var(--footer-h) / auto;
+  grid-column-gap: 1.5em;
+
+  @include media-desktop {
+    grid-template:
+      'header' var(--banner-h) 'main' auto 'footer' var(--footer-h)
+      / auto;
+  }
+
+  header {
+    //grid-area: header;
+  }
+
+  main {
+    grid-area: main;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  &.en {
+    .fr {
+      display: none;
+    }
+  }
+
+  &.fr {
+    .en {
+      display: none;
+    }
+  }
+}

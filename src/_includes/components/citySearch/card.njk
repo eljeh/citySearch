@@ -1,0 +1,50 @@
+<div class="card" style="background-image: url('https://source.unsplash.com/random/?city')">
+
+  <label for="favorite" class="favorite">
+    <input id="favorite" type="checkbox" aria-label="favorite">
+    <span class="fa-stack">
+      <i class="fas fa-heart fa-stack-1x"></i>
+      <i class="far fa-heart fa-stack-1x"></i>
+    </span>
+  </label>
+
+  <div class="close">
+    <button>
+      <i class="far fa-times-circle fa-lg"></i>
+    </button>
+  </div>
+
+
+  <div class="card-content-thumb">
+
+    <h3 class="card-title">
+      <span>$1125</span><small><span>and</span><span>up</span></small>
+    </h3>
+
+    <div class="card-details">
+      4515 Varsity Dr. NW, Calgary
+      <div class="name">Varsite Square Appartments</div>
+    </div>
+
+    <button class="btn-look-a-like">Learn More</button>
+
+  </div>
+
+
+  <div class="card-content-full">
+
+    {% include "components/citySearch/carousel.njk" %}
+
+    <div class="content-info">
+
+      {% include "components/citySearch/card-info/heading.njk" %}
+      {% include "components/citySearch/card-info/availability.njk" %}
+      {% include "components/citySearch/card-info/features.njk" %}
+      {% include "components/citySearch/card-info/cta.njk" %}
+      {% include "components/citySearch/card-info/recommended.njk" %}
+
+    </div>
+
+  </div>
+
+</div>
