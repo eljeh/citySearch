@@ -16,35 +16,33 @@ layout: layouts/_base.njk
 
 </div>
 <script>
-$('.filterToggle').click(function() {
-  $('.filter').toggleClass('open');
-});
+  $('.filterToggle').click(function() {
+    $('.filter').toggleClass('open');
+  });
 
-$('.mapToggle').click(function() {
-  $('.results-panel').toggleClass('open');
-});
+  $('.mapToggle').click(function() {
+    $('.results-panel').toggleClass('open');
+  });
 
-$('.card').click(function() {
+  $('.card').click(function() {
 
-
-  if($(this).hasClass('open')){
-   $('.card').removeClass('open');
-  } else {
+    if($(this).hasClass('open')){
     $('.card').removeClass('open');
-    $(this).addClass('open');
-      scrollTo(this,200);
+    $('.results-panel').removeClass('has-open');
+    } else {
+      $('.card').removeClass('open');
+      $(this).addClass('open');
+      $('.results-panel').addClass('has-open');
+        scrollTo(this,200);
+    }
+
+  });
+
+  function scrollTo(el,speed,offSet) {
+      $([document.documentElement, document.body]).animate({
+          scrollTop: $(el).offset().top -10
+      }, speed);
   }
-
-});
-
-function scrollTo(el,speed,offSet) {
-     $([document.documentElement, document.body]).animate({
-        scrollTop: $(el).offset().top -10
-    }, speed);
-}
-
-
-
 </script>
 
 
