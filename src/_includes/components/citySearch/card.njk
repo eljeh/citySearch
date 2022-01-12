@@ -1,4 +1,5 @@
-<div class="card" style="background-image: url('https://source.unsplash.com/random/?city')">
+
+<div class="card" style="background-image: url('https://source.unsplash.com/random/?{{ card.bgImg }}')">
 
   <label for="favorite" class="favorite">
     <input id="favorite" type="checkbox" aria-label="favorite">
@@ -14,22 +15,20 @@
     </button>
   </div>
 
-
   <div class="card-content-thumb">
 
     <h3 class="card-title">
-      <span>$1125</span><small><span>and</span><span>up</span></small>
+      <span>${{ card.price }}</span><small><span>and</span><span>up</span></small>
     </h3>
 
     <div class="card-details">
-      4515 Varsity Dr. NW, Calgary
-      <div class="name">Varsite Square Appartments</div>
+      <div class="name">{{ card.add }}</div>
+      <div class="name">{{ card.name }}</div>
     </div>
 
     <button class="btn-look-a-like">Learn More</button>
 
   </div>
-
 
   <div class="card-content-full">
 

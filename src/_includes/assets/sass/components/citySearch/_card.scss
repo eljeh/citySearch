@@ -1,3 +1,198 @@
+@mixin card-landscape {
+  display: flex;
+  position: relative;
+
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  width: 100%;
+  min-width: unset;
+  max-width: 12em;
+  height: 18em;
+
+  cursor: pointer;
+}
+
+@mixin resultsOpen-cardOpen {
+  min-height: unset;
+  align-items: stretch;
+  .card-content-full {
+    //flex-direction: row;
+    height: 100%;
+    .carousel {
+      //width: 73em;
+      img {
+        min-width: 100%;
+      }
+    }
+    .content-info {
+      width: inherit;
+      max-width: 42.3em;
+      padding-bottom: 1em;
+
+      align-self: center; //align-self: end;
+      .info-title {
+        font-size: 3em;
+      }
+
+      & > *:not(:last-child) {
+        padding-bottom: 1em;
+        margin-top: 1em;
+      }
+    }
+  }
+}
+
+@mixin resultsOpen-cardOpen-landscape {
+  min-height: unset;
+  align-items: stretch;
+  .card-content-full {
+    flex-direction: row;
+    height: 100%;
+    .carousel {
+      width: 73em;
+      img {
+        min-width: 100%;
+      }
+    }
+    .content-info {
+      width: inherit;
+      max-width: 42.3em;
+      padding-bottom: 1em;
+
+      align-self: center;
+      .info-title {
+        font-size: 3em;
+      }
+
+      & > *:not(:last-child) {
+        padding-bottom: 1em;
+        margin-top: 1em;
+      }
+    }
+  }
+}
+
+@mixin card-portait {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+
+  min-width: 19em;
+  width: 100%;
+  height: 9em;
+
+  cursor: pointer;
+}
+
+@mixin card-thumb-landscape {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  //justify-content: flex-start;
+  //align-self: end;
+
+  margin: -1px;
+  padding: 0.5em;
+
+  width: 102%;
+  height: 8.5em;
+
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+@mixin card-thumb-portait {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  align-self: end;
+
+  margin: -1px;
+  padding: 0.5em;
+
+  width: 62%;
+  height: 101%;
+
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+@mixin recommended-card-landscape {
+  font-size: 1.3em;
+
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  max-width: 10.4em;
+  min-width: unset;
+  width: 100%;
+  height: 16em;
+
+  cursor: pointer;
+}
+
+@mixin recommended-card-thumb-landscape {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  align-self: end;
+
+  margin: -1px;
+  padding: 0.5em;
+
+  width: 101%;
+  height: 8.5em;
+
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+@mixin recommended-card-portrait {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 19em;
+  width: 100%;
+  height: 10em;
+
+  cursor: pointer;
+}
+
+@mixin recommended-card-thumb-portrait {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  align-self: end;
+
+  margin: -1px;
+  padding: 0.5em;
+
+  width: 62%;
+  height: 101%;
+
+  background: white;
+  backdrop-filter: blur(4px);
+}
+
 .card {
   background-position: center center;
   background-size: cover;
@@ -63,20 +258,6 @@
     }
   }
 
-  &-content-thumb {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: relative;
-    margin: -1px;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(4px);
-    align-self: end;
-    width: 100%;
-    height: 8.5em;
-    padding: 0.5em;
-  }
-
   &-title {
     display: flex;
     font-size: 1.5em;
@@ -94,7 +275,7 @@
   }
 
   &-details {
-    font-size: 0.8em;
+    font-size: 0.75em;
     font-weight: 600;
     line-height: 1.25;
     .name {
@@ -112,24 +293,19 @@
     border-radius: 2px;
   }
   .btn-look-a-like {
+    min-height: unset;
     position: absolute;
-    bottom: 1em;
+    bottom: 0.5em;
     width: calc(100% - 1em);
-    @media screen and (orientation: portrait) {
-      bottom: 0.5em;
-    }
   }
 }
 
 .card {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 100%;
-  height: 10em;
+  @include card-landscape;
 
+  &-content-thumb {
+    @include card-thumb-landscape;
+  }
 
   &.open {
     min-width: 100%;
@@ -137,12 +313,24 @@
     height: unset;
     align-items: end;
 
+    & > .card-content-thumb {
+      display: none !important;
+    }
+
     .card-content-full {
+      font-size: 0.4em;
+      line-height: 1.618;
       width: 100%;
       display: flex;
       flex-direction: column;
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(8px);
+      @media screen and (min-width: 768px) {
+        font-size: 0.75em;
+      }
+      @media screen and (min-width: 1366px) {
+        font-size: 1em;
+      }
 
       .carousel {
         position: relative;
@@ -286,8 +474,13 @@
             .contact-share,
             .contact-tel,
             .contact-email {
+              min-width: 2.75em;
+              min-height: 2.75em;
               border: 0;
               justify-self: end;
+              @media screen and (min-width: 1366px) {
+                min-height: unset;
+              }
             }
             .contact-share {
               width: 13ch;
@@ -328,12 +521,12 @@
 
                 &.sqft {
                   grid-area: sqft;
-                  width: 8em;
+                  width: 7em;
                 }
 
                 &.sd {
                   grid-area: sd;
-                  width: 7em;
+                  width: 6em;
                 }
 
                 &.availability {
@@ -368,7 +561,6 @@
 
         .recommended {
           width: 100%;
-          //padding: 0 1.618em 1em;
 
           .title {
             line-height: 2em;
@@ -376,10 +568,11 @@
 
           .list {
             padding: 0;
+            justify-content: space-around;
 
             .card {
-              max-width: 19em;
-              height: 10em;
+              max-width: 16.7em;
+              height: 8em;
               flex-direction: column;
               justify-content: space-between;
               background-size: auto 112%;
@@ -388,7 +581,7 @@
               background-origin: border-box;
 
               .card-content-thumb {
-                width: 62%;
+                width: 67%;
                 height: 101%;
                 background: rgb(255, 255, 255);
                 .card-title {
@@ -407,26 +600,23 @@
   }
 
   @media screen and (orientation: portrait) {
-    min-width: 21em;
-    flex-direction: column;
-    justify-content: space-between;
+    @include card-portait;
 
     &-content-thumb {
-      width: 62%;
-      height: 101%;
+      @include card-thumb-portait;
     }
 
     &.open {
       z-index: 2;
 
       .card-content-full {
-        font-size: 0.4rem;
-        line-height: 1.5;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(8px);
+        // font-size: 0.4rem;
+        // line-height: 1.5;
+        // width: 101%;
+        // display: flex;
+        // flex-direction: column;
+        // background: rgba(255, 255, 255, 0.9);
+        // backdrop-filter: blur(8px);
 
         .carousel {
           position: relative;
@@ -519,12 +709,13 @@
 
           & > * {
             font-size: 1.4em;
+            margin-top: 1em;
           }
 
           & > *:not(:last-child) {
-            border-bottom: 1px solid black;
-            padding-bottom: 0.5em;
-            margin-top: 0.5em;
+            // border-bottom: 1px solid black;
+            padding-bottom: 1em;
+            margin-top: 1em;
           }
 
           .title {
@@ -540,6 +731,7 @@
 
             .content-details {
               font-size: 1.5em;
+              line-height: 1em;
 
               .info-title {
                 display: flex;
@@ -561,7 +753,8 @@
             .content-contact {
               display: flex;
               flex-direction: row;
-              justify-content: space-evenly;
+              justify-content: space-around;
+              padding: 1em;
               width: 100%;
               gap: 0.25em;
 
@@ -592,17 +785,13 @@
               .contact-share,
               .contact-tel,
               .contact-email {
+                min-width: 2.75em;
+                min-height: 2.75em;
                 border: 0;
                 justify-self: end;
-              }
-              .contact-share {
-                width: 11ch;
-              }
-              .contact-tel {
-                width: 15ch;
-              }
-              .contact-email {
-                width: 8ch;
+                i {
+                  font-size: 1.6em;
+                }
               }
             }
           }
@@ -635,8 +824,6 @@
 
                   &.sd {
                     display: none;
-                    // grid-area: sd;
-                    // width: 7em;
                   }
 
                   &.availability {
@@ -677,6 +864,7 @@
             }
 
             .list {
+              margin: 0;
               padding: 0;
               overflow: visible;
               .card {
@@ -709,18 +897,15 @@
     }
   }
 
-  @media screen and (min-width: 768px) {
-    height: 20em;
+  @media screen and (max-height: 767px) {
+    @media screen and (orientation: landscape) {
+      font-size: 0.85em;
+      @include card-portait;
 
-
-    @media screen and (orientation: portrait) {
-      min-width: 18em;
-      height: 10em;
+      &-content-thumb {
+        @include card-thumb-portait;
+      }
     }
-  }
-
-  @media screen and (min-width: 1920px) {
-    max-width: 13.5em;
   }
 }
 
@@ -734,45 +919,24 @@
   }
   &:hover {
     box-shadow: 0px 0px 5px 0px #0000002b;
-    //position: absolute;
     transform: scale(1.03);
     z-index: 5;
   }
 }
 
-.card.open {
-  & > .card-content-thumb {
-    display: none !important;
-  }
-}
-
 .results-panel.open {
-  .card.open {
-    min-height: unset;
-    align-items: stretch;
-    .card-content-full {
-      flex-direction: row;
-      height: 100%;
-      .carousel {
-        width: 73em;
-        img {
-          min-width: 100%;
+  .card {
+    @media screen and (orientation: portrait) {
+      @media screen and (min-width: 768px) {
+        @include card-landscape;
+        &-content-thumb {
+          @include card-thumb-landscape;
         }
       }
-      .content-info {
-        width: inherit;
-        max-width: 42.3em;
-        padding-bottom: 1em;
-        align-self: end;
-        .info-title {
-          font-size: 3em;
-        }
+    }
 
-        & > *:not(:last-child) {
-          padding-bottom: 1em;
-          margin-top: 1em;
-        }
-      }
+    &.open {
+      @include resultsOpen-cardOpen-landscape;
     }
   }
 }

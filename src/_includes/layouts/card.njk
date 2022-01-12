@@ -33,13 +33,9 @@ layout: layouts/_base.njk
 
     pos[0] = Math.round( ((-x/250*2)+1.5) * maxRotation) - 8;
     pos[1] = Math.round(((-y/350*-2)+1.5)*maxRotation) - 8;
-    
-
-  //$('.card').html("X: " + x + " Y: " + y); 
 
   element.css({
     '-webkit-transform':'perspective(1800) rotateX('+pos[1]+'deg) rotateY('+pos[0]+'deg) scale(1.02)',
-    //'-webkit-transform':'perspective(1800) rotateX('+x/1000+'deg) rotateY('+y/1000+'deg) scale(1.015)',
     'box-shadow':''+x/50+'px '+y/50+'px 10px 1px #00000042, 0px 0px 1px 1px #00000022'
   }); 
 
